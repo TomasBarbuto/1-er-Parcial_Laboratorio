@@ -1,17 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "validaciones.h"
 #include <string.h>
+#include "validaciones.h"
 
 
 /**
-*\brief: Pide un numero y valida que este dentro de un rango y que sea un numero.
-*\
-*\param: valor ingresado puntero a int, mensaje , error, rango minimo, rango maximo.
-*\
+*\brief: Pide un numero y valida que sea int y que este dentro de un rango
+*\param: puntero a int , array de char , array de char, rango minimo, rango maximo.
 *\return: Retorna 1 si cargo con exito y 0 si hubo algun error.
-*
-*/
+**/
 
 int getNumber(int *pResultado, char *mensaje, char *mensajeError, int minimo,
 		int maximo) {
@@ -47,13 +44,10 @@ int getNumber(int *pResultado, char *mensaje, char *mensajeError, int minimo,
 }
 
 /**
-*\brief: Pide un numero flotante y valida que este dentro de un rango y que sea un numero.
-*\
-*\param: valor ingresado puntero a float, mensaje , error, rango minimo, rango maximo.
-*\
+*\brief: Pide un numero flotante y valida que este dentro de un rango y que sea del tipo float.
+*\param: puntero a float,  array de char , array de char, rango minimo, rango maximo.
 *\return: Retorna 1 si cargo con exito y 0 si hubo algun error.
-*
-*/
+**/
 
 int getFloat(float *pResultado, char *mensaje, char *mensajeError, float minimo,
 		float maximo) {
@@ -88,31 +82,11 @@ int getFloat(float *pResultado, char *mensaje, char *mensajeError, float minimo,
 	return retorno;
 }
 
-int esPar(int numero){
-
-	int retorno = 0;
-
-	if(numero % 2 == 0){
-
-		retorno = 1;
-	}
-
-
-	return retorno;
-}
-
-int esPositivo(int numero){
-
-	int retorno = 0;
-
-	if(numero > 0){
-
-		retorno = 1;
-	}
-
-	return retorno;
-}
-
+/**
+*\brief: Pide un array de char y valida que haya espacio para copiarlo.
+*\param: Array de char, array de char, array de char, entero indicando espacio.
+*\return: Retorna 1 si cargo con exito y 0 si hubo algun error.
+**/
 int getString(char pResultado[], char *mensaje, char *mensajeError, int EspacioChar) {
 
 	int retorno = 0;

@@ -24,8 +24,16 @@ typedef struct{
 	float precioViaje;
 	float kmsTotales;
 	fechas fecha;
+	int isEmpty;
 
 }hojaDeRuta;
 
+int idHojaDeRuta();
+int inicializarHojaDeRuta(hojaDeRuta eHojasDeRuta[], int longitud);
+int buscarVacioHojasDeRuta(hojaDeRuta eeHojasDeRuta[], int longitud);
+int buscarEspacioHojaDeRuta(hojaDeRuta eHojasDeRuta[], int longitud);
+int darAltaHojaDeRuta(hojaDeRuta eHojasDeRuta[], transporte transportes[], int longitudHojasDeRuta, int longitudTransporte);
+int mostrarHojaDeRuta(hojaDeRuta eHojasDeRuta[], int longitud);
+void mostrarUnaHojaDeRUTA(hojaDeRuta eHojasDeRuta);
 
 #endif /* HOJADERUTA_H_ */

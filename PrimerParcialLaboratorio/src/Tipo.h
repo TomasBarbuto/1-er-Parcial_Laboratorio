@@ -15,6 +15,8 @@ typedef struct{
 
 }tipo;
 
+int iniciarTipos(tipo eTipos[]);
+int listarTipos(tipo eTipos[], int longitud);
 
 
 #endif /* TIPO_H_ */

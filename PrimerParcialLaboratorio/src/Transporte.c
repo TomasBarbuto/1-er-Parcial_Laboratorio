@@ -3,16 +3,156 @@
 #include <string.h>
 #include "Transporte.h"
 #include "Validaciones.h"
+#include "Tipo.h"
 
-int inicializarTransporte(transporte transportes[], int len) {
+/**
+*\brief: Inicia el campo isempty del array de tipo transporte en 0.
+*\param: Array de tipo transporte, longitud del Array.
+*\return: Retorna 1 si funciono y 0 si ocurre algun error.
+**/
+int inicializarTransporte(transporte eTransportes[], int longitud) {
 
 	int retorno = 0;
 
-	if (transportes != NULL && len > 0) {
+	if (eTransportes != NULL && longitud > 0) {
 
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < longitud; i++) {
 
-			transportes[i].isEmpty = 0; //0 vacio 1 lleno.
+			eTransportes[i].isEmpty = 0; //0 vacio 1 llongitudo.
+		}
+		retorno = 1;
+	}
+	return retorno;
+}
+
+/**
+*\brief: Recorre un array de tipo transporte buscando algun espacio vacio. (isempty = 0)
+*\param: Array de tipo transporte, longitud del array.
+*\return: Retorna el indice vacio  y -1 si no encontro.
+**/
+int buscarVacioTransporte(transporte eTransportes[], int longitud) {
+
+	int retorno = -1;
+
+	if (eTransportes != NULL && longitud > 0) {
+
+		for (int i = 0; i < longitud; i++) {
+
+			if (eTransportes[i].isEmpty == 0) {
+
+				retorno = i; //ya encontre vacio, break.
+				break;
+			}
+		}
+	}
+	return retorno;
+}
+
+/**
+*\brief: Carga datos en el array de tipo transporte. y
+*\param: Array de tipo transporte, longitud del array.
+*\return: Retorna 1 si encontro espacio y 0 si no encontro.
+**/
+int darAltaTransporte(transporte eTransportes[], int longitud) {
+
+	int retorno = 0;
+	int indice;
+	int confirm;
+	transporte auxtransporte;
+
+	if (eTransportes != NULL && longitud > 0) {
+
+		do{
+			indice = buscarVacioTransporte(eTransportes, longitud);
+
+			if(indice != -1){
+
+				auxtransporte.idTransporte = idTransportes()-1;
+
+				getString(auxtransporte.descripcion, "\nIngrese descripcion: ",
+						"Se paso de texto", 1024);
+
+				getNumber(&auxtransporte.pesoCarga, "\nIngrese el pesoCarga: ",
+						"Imposible llevar esos KG", 1, 1000000);
+
+				getNumber(&auxtransporte.cantidadBultos,
+						"\nIngrese cantidadBultos:",
+						"Imposible llevar esa cantidad de bultos", 1, 10000);
+
+				getNumber(&auxtransporte.tipoId, "\nSeleccione tipo de transporte\n"
+						"\n1000: 'CAMION RECTO'\n"
+						"1001: 'CAMION REMOLQUE'\n"
+						"1002: 'CAMION SEMIRREMOLQUE'\n"
+						"1003: 'CAMION ELEVADOR'\nTIPO: ", "\nID No valido\n", 1000, 1003);
+
+				auxtransporte.isEmpty = 1;
+
+			}
+			mostrarDato(auxtransporte);
+			getNumber(&confirm, "\nIngrese 1 si los datos ingresados son correctos o 0 si desea volver a cargar\n"
+					"Opcion: ", "\nNo ingreso algo valido\n",0 , 1);
+
+		}while(confirm != 1);
+
+		eTransportes[indice] = auxtransporte;
+		retorno = 1;
+	}
+
+	return retorno;
+}
+
+/**
+*\brief: Muestra los campos de la variable de tipo transporte.
+*\param: Variable de tipo transporte.
+*\return: VOID
+**/
+void mostrarDato(transporte eTransportes){
+
+	printf("\nID transporte: %d\n", eTransportes.idTransporte);
+	printf("Descripcion: %s\n", eTransportes.descripcion);
+	printf("PesoCarga: %d\n", eTransportes.pesoCarga);
+	printf("cantidad Bultos: %d\n", eTransportes.cantidadBultos);
+}
+
+/**
+*\brief: Muestra los datos cargados en el array de tipo transporte.
+*\param: Array de tipo transporte, longitud del array.
+*\return: Retorna 1 si puede mostrar, Retorna 0 si ocurrio un error.
+**/
+int mostrarDatos(transporte eTransportes[], int longitud) {
+
+	int retorno = 0;
+
+	if(eTransportes != NULL && longitud > 0){
+
+		for (int i = 0; i < longitud; i++) {
+
+			if (eTransportes[i].isEmpty == 1) {
+
+				printf("\nID transporte: %d\n", eTransportes[i].idTransporte);
+				printf("descripcion: %s\n", eTransportes[i].descripcion);
+				printf("pesoCarga: %d\n", eTransportes[i].pesoCarga);
+				printf("cantidadBultos: %d\n", eTransportes[i].cantidadBultos);
+
+				switch (eTransportes[i].tipoId) {
+
+				case 1000:
+					printf("tipo: %d 'CAMION RECTO'\n", eTransportes[i].tipoId);
+					break;
+
+				case 1001:
+					printf("tipo: %d 'CAMION REMOLQUE'\n", eTransportes[i].tipoId);
+					break;
+
+				case 1002:
+					printf("tipo: %d 'CAMION SEMIRREMOLQUE'\n", eTransportes[i].tipoId);
+					break;
+
+				case 1003:
+					printf("tipo: %d 'CAMION ELEVADOR'\n", eTransportes[i].tipoId);
+					break;
+				}
+			}
 		}
 
 		retorno = 1;
@@ -21,199 +161,130 @@ int inicializarTransporte(transporte transportes[], int len) {
 	return retorno;
 }
 
-int buscarVacio(transporte transportes[], int len) {
-
-	int retorno = -1;
-
-	if (transportes != NULL && len > 0) {
-
-		for (int i = 0; i < len; i++) {
-
-			if (transportes[i].isEmpty == 0) {
-
-				retorno = i; //ya encontre vacio, break.
-				break;
-			}
-
-		}
-
-	}
-
-	return retorno;
-}
-
-int darAltaTransporte(transporte transportes[], int len) {
-
-	int retorno = -1;
-	int indice;
-	transporte auxtransporte;
-
-	if (transportes != NULL && len > 0) {
-
-		indice = buscarVacio(transportes, len);
-
-		if (indice != -1) {
-
-			//getNumber(&auxtransporte.idTransporte, "Ingrese idtransporte: \n", "Ingrese un numero entre 1000 y 9999: \n",
-			//	1000, 9999);
-			auxtransporte.idTransporte = idTransportes() - 1;
-			getString(auxtransporte.descripcion, "\nIngrese descripcion: ",
-					"Se paso de texto", 1024);
-
-			getNumber(&auxtransporte.pesoCarga, "\nIngrese el pesoCarga: ",
-					"Imposible llevar esos KG", 50, 100000);
-
-			getNumber(&auxtransporte.cantidadBultos,
-					"\nIngrese cantidadBultos:",
-					"Imposible llevar esa cantidad de bultos", 1, 1000);
-
-			getNumber(&auxtransporte.tipoId, "\nIngrese tipoId:\n"
-					"1000: 'CAMION RECTO'\n"
-					"1001: 'CAMION REMOLQUE'\n"
-					"1002: 'CAMION SEMIRREMOLQUE'\n"
-					"1003: 'CAMION ELEVADOR'",
-					"ID No valido", 1000, 1003);
-
-			auxtransporte.isEmpty = 1;
-
-		}
-		//confirmar antes de dar alta
-		transportes[indice] = auxtransporte;
-
-	}
-
-	return retorno;
-}
-
-void mostrarDatos(transporte transporte[], int len){
-
-	for (int i = 0; i < len; i++) {
-
-		if (transporte[i].isEmpty == 1) {
-
-			printf("\nid transporte es: %d\n", transporte[i].idTransporte);
-			printf("descripcion es: %s\n", transporte[i].descripcion);
-			printf("pesoCarga es: %d\n", transporte[i].pesoCarga);
-			printf("cantidadBultos es: %d\n", transporte[i].cantidadBultos);
-
-			switch (transporte[i].tipoId) {
-
-			case 1000:
-				printf("tipoId: %d 'CAMION RECTO'\n", transporte[i].tipoId);
-				break;
-
-			case 1001:
-				printf("tipoId: %d 'CAMION REMOLQUE'\n", transporte[i].tipoId);
-				break;
-
-			case 1002:
-				printf("tipoId: %d 'CAMION SEMIRREMOLQUE'\n",
-						transporte[i].tipoId);
-				break;
-
-			case 1003:
-				printf("tipoId: %d 'CAMION ELEVADOR'\n", transporte[i].tipoId);
-				break;
-			}
-
-		}
-	}
-}
-
+/**
+*\brief: Otorga un ID autoincremental.
+*\param: ---
+*\return: retorna el id autoincrementado.
+**/
 int idTransportes() {
 
-	static int idT = 1000;
-	idT++;
+	static int idTransporte = 1000;
+	idTransporte++;
 
-	return idT;
+	return idTransporte;
 }
 
-int buscarIdDeTransporte(transporte transportes[], int len, int id) {
+/**
+*\brief: Busca una coincidencia entre id y el array eTransportes.
+*\param: Array de tipo transporte, logintud de tipo int, id de tipo int
+*\return: retorna la posicion donde encontro la coincidencia, si no encuentra retorna -1.
+**/
+int buscarIdDeTransporte(transporte eTransportes[], int longitud, int id) {
 
 	int retorno = -1;
 
-	if (transportes != NULL && len > 0 && id > 0) {
+	if (eTransportes != NULL && longitud > 0 && id > 0) {
 
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < longitud; i++) {
 
-			if (transportes[i].idTransporte == id) {
+			if (eTransportes[i].idTransporte == id) {
 
 				retorno = i; //ya encontre el id, break.
 				break;
 			}
-
 		}
 	}
 
 	return retorno;
 }
 
-int darBajaTransporte(transporte transportes[], int len) {
+/**
+*\brief: Otorga la baja a un indice del array de tipo transporte.
+*\param: Array de tipo transporte, longitud del array de tipo int.
+*\return: Retorna 0 si fue exitoso, Retorna -1 si ocurrio un error.
+**/
+int darBajaTransporte(transporte eTransportes[], int longitud) {
 
 	int retorno = -1;
 	int id;
 	int indice;
+	int confirmar;
 
-	if (transportes != NULL && len > 0) {
+	if (eTransportes != NULL && longitud > 0) {
 
-		printf("\nQue id quiere dar de baja?: ");
+		listarTransportes(eTransportes, longitud);
 
-		listarTransportes(transportes, len);
+		do{
+			getNumber(&id, "Que id quiere dar de baja?\nNumero: ", "Numero no valido\nReingrese El ID", 1000, 9999);
 
-		getNumber(&id, "\nNumero: ", "Numero no valido\nReingrese El ID", 1000,
-				9999);
-		indice = buscarIdDeTransporte(transportes, len, id);
-		//agregar otra validacion si esta seguro y mostrar un printf se dio de baja exitosamente.
-		if (indice != -1) {
+			indice = buscarIdDeTransporte(eTransportes, longitud, id);
 
-			transportes[indice].isEmpty = 0;
-		}
+			if (indice != -1) {
+
+				eTransportes[indice].isEmpty = 0;
+				retorno = 0;
+				mostrarDato(eTransportes[indice]);
+				getNumber(&confirmar, "\nConfirme si desea dar de baja\n"
+						"0-ELEGIR OTRO ID\n1- CONFIRMAR\nOPCION:", "\nNo es una opcion valida\n", 0,1);
+			}
+
+
+		}while(confirmar != 1);
 	}
-
 	return retorno;
 }
 
-int listarTransportes(transporte transportes[], int len) {
+/**
+*\brief: Muestra una lista del array de tipo transporte que esten activos.
+*\param: Array de tipo transporte , Longitud del array.
+*\return: Retorna 1 si pudo recorrer bien el array, Retorna 0 si hubo algun error.
+**/
+int listarTransportes(transporte eTransportes[], int longitud) {
 
-	int retorno = -1;
+	int retorno = 0;
 
-	if (transportes != NULL && len > 0) {
+	if (eTransportes != NULL && longitud > 0) {
 
-		printf("Los transportes actuales son: \n");
+		printf("Los Transportes actuales son: \n");
 
-		for (int i = 0; i < len; i++) {
+		for (int i = 0; i < longitud; i++) {
 
-			if (transportes[i].isEmpty == 1) {
+			if (eTransportes[i].isEmpty == 1) {
 
-				printf("ID: %d\n", transportes[i].idTransporte);
+				printf("ID: %d\n", eTransportes[i].idTransporte);
 			}
 		}
-		retorno = 0;
+		retorno = 1;
 	}
 
 	return retorno;
 }
-int modificartransporte(transporte transportes[], int len) {
 
-	int retorno = -1;
+/**
+*\brief: Modifica valores de una variable de tipo transporte seleccionada.
+*\param: Array de tipo transporte, Longitud del array.
+*\return: Retorna 1 si se pudo modificar, Retorna 0 si no se logro.
+**/
+int modificarTransporte(transporte eTransportes[], int longitud) {
+
+	int retorno = 0;
 	int id;
 	int indice;
 	int opcion;
 
-	if (transportes != NULL && len > 0) {
+	if (eTransportes != NULL && longitud > 0) {
 
-		printf("\nQue id quiere modificar: ");
-		listarTransportes(transportes, len);
-		scanf("%d", &id);
+		listarTransportes(eTransportes, longitud);
+		getNumber(&id, "\nQue id quiere modificar: ", "\nEse transporte no existe\n", 1000, 9999);
 
-		indice = buscarIdDeTransporte(transportes, len, id);
+		indice = buscarIdDeTransporte(eTransportes, longitud, id);
 
-		if(indice == -1)
-		{
-			printf("No se encontro el id");
+		if (indice == -1) {
+
+			printf("No se encontro el ID seleccionado\n");
 			system("pause");
-		}
-		else{
+
+		} else {
 
 			getNumber(&opcion, "\n¿Que opcion desea modificar?\n"
 					"1-PesoCarga\n"
@@ -225,24 +296,146 @@ int modificartransporte(transporte transportes[], int len) {
 			switch (opcion) {
 
 			case 1:
-				printf("Ingrese precio: \n");
-				scanf("%d", &transportes[indice].pesoCarga);
+				getNumber(&eTransportes[indice].pesoCarga, "\nIngrese nuevo peso de carga: ",
+						"\nNo es posible lleva tanto peso\n", 50, 100000);
 				break;
 
 			case 2:
-				printf("Ingrese tipo: \n");
-				scanf("%d", &transportes[indice].cantidadBultos);
+				getNumber(&eTransportes[indice].cantidadBultos, "\nIngrese nueva cantidad de bultos: ",
+						  "\nNo es posible llevar tanta cantidad\n", 1, 1000);
 				break;
 
 			case 3:
-				printf("Ingrese precio: \n");
-				scanf("%d", &transportes[indice].pesoCarga);
-				printf("Ingrese tipo: \n");
-				scanf("%d", &transportes[indice].cantidadBultos);
+				getNumber(&eTransportes[indice].pesoCarga, "\nIngrese nuevo peso de carga: ",
+						  "\nNo es posible lleva tanto peso\n", 50, 1000);
+
+				getNumber(&eTransportes[indice].cantidadBultos, "\nIngrese nueva cantidad de bultos: ",
+						  "\nNo es posible llevar tanta cantidad\n", 1, 1000);
 				break;
 
 			}
 
+		}
+		retorno = 1;
+	}
+
+	return retorno;
+}
+
+/**
+*\brief: Ordena un array de tipo transporte por su campo tipoID.
+*\param: Array de tipo transporte, Longitud del array.
+*\return: retorna 1 si se logro correctamente, retorna 0 si ocurrio algun error.
+**/
+int ordenarTransportesPorID(transporte eTransportes[], int longitud) {
+
+	int flagSwapId;
+	int i;
+	int retorno = 0;
+	transporte buffer;
+
+	if (eTransportes != NULL && longitud > 0) {
+
+		do {
+			flagSwapId = 0;
+
+			for (i = 0; i < longitud-1; i++) {
+
+				if (eTransportes[i].tipoId > eTransportes[i + 1].tipoId) {
+
+					flagSwapId = 1;
+					buffer = eTransportes[i];
+					eTransportes[i] = eTransportes[i + 1];
+					eTransportes[i + 1] = buffer;
+
+				}
+			}
+
+		} while (flagSwapId);
+
+		retorno = 1;
+	}
+
+	return retorno;
+}
+
+/**
+*\brief: Ordena un array de tipo transporte por su campo descripcion.
+*\param: Array de tipo transporte, Longitud del array.
+*\return: Retorna 1 si tuvo exito, Retorna 0 si ocurrio un error.
+**/
+int ordenarTransportesPorDescripcion(transporte eTransportes[], int longitud){
+
+	int retorno = 0;
+	int flagSwapDes;
+	transporte buffer;
+
+	if(eTransportes != NULL && longitud > 0){
+
+		do{
+			flagSwapDes = 0;
+
+			for(int i = 0; i < longitud-1; i++){
+
+				if (eTransportes[i].tipoId == eTransportes[i+1].tipoId){
+
+					if (strcmp(eTransportes[i].descripcion, eTransportes[i+1].descripcion) > 0) {
+
+						flagSwapDes = 1;
+						buffer = eTransportes[i];
+						eTransportes[i] = eTransportes[i+1];
+						eTransportes[i+1] = buffer;
+
+					}
+				}
+			}
+
+		}while(flagSwapDes);
+		retorno = 1;
+	}
+	return retorno;
+}
+
+/**
+*\brief: Verifica que haya espacio para cargar un nuevo dato de tipo transporte.
+*\param: Array de tipo transporte, Longitud del array.
+*\return: Retorna 1 si encuentra espacio, Retorna 0 si no lo encuentra.
+**/
+int buscarEspacio(transporte eTransportes[], int longitud){
+
+	int retorno = 0;
+
+	if(eTransportes != NULL && longitud > 0){
+
+		for(int i = 0; i < longitud; i++){
+
+			if(eTransportes[i].isEmpty == 0){
+
+				retorno = 1;
+			}
+		}
+	}
+
+	return retorno;
+}
+
+/**
+*\brief: Recorre un array de tipo transporte y busca que coincida con el param id.
+*\param: Array de tipo transporte, Longitud del array.
+*\return: Retorna 1 si encontro coincidencia, Retorna 0 si no la hay.
+**/
+int buscarIdTransporte(transporte eTransportes[], int longitud, int id){
+
+	int retorno = 0;
+
+	if(eTransportes != NULL && longitud > 0){
+		for(int i = 0; i < longitud; i++){
+
+			if(eTransportes[i].idTransporte == id && eTransportes[i].isEmpty == 1){
+
+				retorno = 1;
+				break;
+			}
 		}
 	}
 
