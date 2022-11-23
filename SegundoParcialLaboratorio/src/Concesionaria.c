@@ -7,6 +7,12 @@
 #include "Controller.h"
 #include "Validaciones.h"
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 Venta* newVenta(){
 
 	Venta *nuevaVenta = NULL;
@@ -28,9 +34,9 @@ Venta* newVenta(){
 }
 
 /**
- * \brief Reserva espacio en memoria para un tipo de datos Jugador, cargando los datos en los campos.
- * \param 6 punteros a char.
- * \return puntero a jugador.
+ * \brief :
+ * \param :
+ * \return:
 **/
 Venta* nuevaVentaParametros(char* idVenta, char* dia, char* mes, char* anio, char* modeloDeAuto,
 							char* cantidadDeVentas, char* precioDeAuto, char* tarjetaDeCredito){
@@ -53,9 +59,9 @@ Venta* nuevaVentaParametros(char* idVenta, char* dia, char* mes, char* anio, cha
 }
 
 /**
- * \brief libera espacio en memoria de un tipo de dato Jugador.
- * \param puntero a jugador.
- * \return VOID
+ * \brief :
+ * \param :
+ * \return:
 **/
 void deleteVenta(Venta *this){
 
@@ -63,9 +69,9 @@ void deleteVenta(Venta *this){
 }
 
 /**
- * \brief Carga un dato de tipo int en el campo id de jugador.
- * \param puntero a jugador, int
- * \return int 1 Bien, 0 ERROR.
+ * \brief :
+ * \param :
+ * \return:
 **/
 int setIdVenta(Venta* this, int id){
 
@@ -81,9 +87,9 @@ int setIdVenta(Venta* this, int id){
 }
 
 /**
- * \brief obtiene un dato cargado en el campo jugador.
- * \param puntero a jugador, puntero a int
- * \return int 1 Bien, 0 ERROR.
+ * \brief :
+ * \param :
+ * \return:
 **/
 int getIdVenta(Venta* this, int* id){
 
@@ -97,6 +103,11 @@ int getIdVenta(Venta* this, int* id){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int setDiaVenta(Venta* this, int dia){
 
 	int retorno = 0;
@@ -110,6 +121,11 @@ int setDiaVenta(Venta* this, int dia){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int getDiaVenta(Venta* this, int* dia){
 
 	int retorno = 0;
@@ -123,6 +139,11 @@ int getDiaVenta(Venta* this, int* dia){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int setMesVenta(Venta* this, int mes){
 
 	int retorno = 0;
@@ -136,6 +157,11 @@ int setMesVenta(Venta* this, int mes){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int getMesVenta(Venta* this, int* mes){
 
 	int retorno = 0;
@@ -149,6 +175,11 @@ int getMesVenta(Venta* this, int* mes){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int setAnioVenta(Venta* this, int anio){
 
 	int retorno = 0;
@@ -162,6 +193,11 @@ int setAnioVenta(Venta* this, int anio){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int getAnioVenta(Venta* this, int* anio){
 
 	int retorno = 0;
@@ -175,6 +211,11 @@ int getAnioVenta(Venta* this, int* anio){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int setCantidadDeVentas(Venta* this, int cantidadDeVentas){
 
 	int retorno = 0;
@@ -188,6 +229,12 @@ int setCantidadDeVentas(Venta* this, int cantidadDeVentas){
 
 	return retorno;
 }
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int getCantidadDeVentas(Venta* this, int* cantidadDeVentas){
 
 	int retorno = 0;
@@ -202,6 +249,11 @@ int getCantidadDeVentas(Venta* this, int* cantidadDeVentas){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int setPrecioDeAuto(Venta* this, float PrecioDeAuto){
 
 	int retorno = 0;
@@ -216,6 +268,11 @@ int setPrecioDeAuto(Venta* this, float PrecioDeAuto){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int getPrecioDeAuto(Venta* this, float* precioDeAuto){
 
 	int retorno = 0;
@@ -229,6 +286,12 @@ int getPrecioDeAuto(Venta* this, float* precioDeAuto){
 
 	return retorno;
 }
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int setModeloDeAuto(Venta* this, char* modeloDeAuto){
 
 	int retorno = 0;
@@ -243,6 +306,11 @@ int setModeloDeAuto(Venta* this, char* modeloDeAuto){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int getModeloDeAuto(Venta* this, char* modeloDeAuto){
 
 	int retorno = 0;
@@ -257,6 +325,11 @@ int getModeloDeAuto(Venta* this, char* modeloDeAuto){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int setTarjetaDeCredito(Venta* this, char* tarjetaDeCredito){
 
 	int retorno = 0;
@@ -271,6 +344,11 @@ int setTarjetaDeCredito(Venta* this, char* tarjetaDeCredito){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int getTarjetaDeCredito(Venta* this, char* tarjetaDeCredito){
 
 	int retorno = 0;
@@ -286,7 +364,11 @@ int getTarjetaDeCredito(Venta* this, char* tarjetaDeCredito){
 }
 
 
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int elegirModelo(char pModeloElegido[]){
 
 	int retorno = 0;
@@ -346,6 +428,11 @@ int elegirModelo(char pModeloElegido[]){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int idAutoincremental(){
 
 	static int idJugador;
@@ -365,9 +452,12 @@ int idAutoincremental(){
 
 	return idJugador;
 }
-///////////////////////////
-///
-///
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ventasMayorASieteMillones(void* pElement){
 
 	int retorno = 0;
@@ -390,7 +480,11 @@ int ventasMayorASieteMillones(void* pElement){
 	return retorno;
 }
 
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ventasMayorAVeinteMillones(void* pElement){
 
 	int retorno = 0;
@@ -414,7 +508,11 @@ int ventasMayorAVeinteMillones(void* pElement){
 	return retorno;
 }
 
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ventasDeUnidadesTotales(void* pElement){
 
 	int retorno = 0;
@@ -434,7 +532,11 @@ int ventasDeUnidadesTotales(void* pElement){
 	return retorno;
 }
 
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ventasPorModeloQSiete(void* pElement){
 
 	int retorno = 0;

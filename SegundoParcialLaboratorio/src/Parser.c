@@ -5,13 +5,11 @@
 #include "Controller.h"
 
 
-/** \brief Parsea los datos de los jugadores desde el archivo jugadores.csv (modo texto).
- *
- * \param path char*
- * \param pArrayListJugador LinkedList*
- * \return int
- */
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int parser_ArchivoVentasFromText(FILE* pFile, LinkedList* pListaDeVentas){
 
 	int retorno = 0;
@@ -58,6 +56,11 @@ int parser_ArchivoVentasFromText(FILE* pFile, LinkedList* pListaDeVentas){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int parser_ArchivoIdFromText(FILE* pFile , char* auxiliarID){
 
 	int retorno = 0;

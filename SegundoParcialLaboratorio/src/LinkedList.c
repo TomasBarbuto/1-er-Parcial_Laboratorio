@@ -5,6 +5,11 @@
 static Node* getNode(LinkedList* this, int nodeIndex);
 static int addNode(LinkedList* this, int nodeIndex,void* pElement);
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 LinkedList* ll_newLinkedList(void){
 
     LinkedList* this = (LinkedList*) malloc(sizeof(LinkedList*));
@@ -29,6 +34,12 @@ int ll_len(LinkedList* this){
     return retorno;
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 static Node* getNode(LinkedList* this, int nodeIndex){
 
     Node* auxNode = NULL;
@@ -45,6 +56,12 @@ static Node* getNode(LinkedList* this, int nodeIndex){
     return auxNode;
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 static int addNode(LinkedList* this, int nodeIndex,void* pElement){
 
    int retorno = -1;
@@ -79,6 +96,12 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement){
     return retorno;
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_add(LinkedList* this, void* pElement){
 
     int retorno=-1;
@@ -94,6 +117,12 @@ int ll_add(LinkedList* this, void* pElement){
     return retorno;
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 void* ll_get(LinkedList* this, int index){
 
     Node* auxNode = NULL;
@@ -111,6 +140,12 @@ void* ll_get(LinkedList* this, int index){
     return pRetorno;
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_set(LinkedList* this, int index, void* pElement){
 
     int retorno = -1;
@@ -127,6 +162,11 @@ int ll_set(LinkedList* this, int index, void* pElement){
 }
 
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_remove(LinkedList* this, int index){
 
     int retorno = -1;
@@ -157,6 +197,11 @@ int ll_remove(LinkedList* this, int index){
     return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_clear(LinkedList* this) {
 
     int retorno = -1;
@@ -175,6 +220,12 @@ int ll_clear(LinkedList* this) {
     return retorno;
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_deleteLinkedList(LinkedList* this) {
 
     int retorno = -1;
@@ -190,6 +241,11 @@ int ll_deleteLinkedList(LinkedList* this) {
     return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_indexOf(LinkedList* this, void* pElement) {
 
     int retorno = -1;
@@ -212,6 +268,12 @@ int ll_indexOf(LinkedList* this, void* pElement) {
     return retorno;
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order){
 
     int returnAux =-1;
@@ -251,6 +313,11 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order){
     return returnAux;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_isEmpty(LinkedList* this){
 
     int retorno = -1;
@@ -269,7 +336,11 @@ int ll_isEmpty(LinkedList* this){
     return retorno;
 }
 
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_push(LinkedList* this, int index, void* pElement){
 
     int retorno = -1;
@@ -284,6 +355,11 @@ int ll_push(LinkedList* this, int index, void* pElement){
     return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 void* ll_pop(LinkedList* this, int index){
 
     void* retorno = NULL;
@@ -303,7 +379,11 @@ void* ll_pop(LinkedList* this, int index){
 
 }
 
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_contains(LinkedList* this, void* pElement){
 
     int retorno=-1;//null
@@ -322,7 +402,11 @@ int ll_contains(LinkedList* this, void* pElement){
     return retorno;
 }
 
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_containsAll(LinkedList* this, LinkedList* this2){
 
     int retorno=-1;
@@ -354,6 +438,11 @@ int ll_containsAll(LinkedList* this, LinkedList* this2){
     return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 LinkedList* ll_subList(LinkedList* this, int from, int to) {
 
     LinkedList* subList = NULL;
@@ -378,7 +467,11 @@ LinkedList* ll_subList(LinkedList* this, int from, int to) {
     return subList;
 }
 
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 LinkedList* ll_clone(LinkedList* this) {
 
     LinkedList* cloneList = NULL;
@@ -390,12 +483,11 @@ LinkedList* ll_clone(LinkedList* this) {
     return cloneList;
 }
 
-/*
- * \brief Cuenta la cantidad de elementos que cumplen con el criterio que es definido por la funcion que recibe como parametro!
- *  \param puntero a linkedlist.
- *  \param puntero a funcion.
- *  \return int (Elementos contados)
- */
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int ll_count(LinkedList* this, int (*fn)(void* element)){
 
 	int acumulador = 0;

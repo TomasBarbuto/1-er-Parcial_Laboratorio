@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 void menuPrincipal(){
 
 	printf("\t\tBienvenido al Menu\n"
@@ -15,6 +21,11 @@ void menuPrincipal(){
 		   "8-SALIR\n");
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 void menuElegirModelo(){
 
 	printf("\t\tBienvenido al Menu de modelos de autos\n"
@@ -30,6 +41,12 @@ void menuElegirModelo(){
 		   "9-Fiat 147\n");
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 void menuModificar(){
 
 	printf("Seleccione el campo a modificar\n"

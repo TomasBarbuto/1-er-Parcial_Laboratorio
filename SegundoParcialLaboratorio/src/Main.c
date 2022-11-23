@@ -9,15 +9,14 @@
 #include "Menu.h"
 
 
-
 int main(void) {
 	setbuf(stdout, NULL);
 
 	int opcion;
 	int ultimoId;
-	int flagLinkedList = 0;
-
+	char confirmar[2];
 	LinkedList* ventaConcesionaria = ll_newLinkedList();
+
 
 	do{
 		menuPrincipal();
@@ -26,25 +25,24 @@ int main(void) {
 			switch(opcion){
 
 			case 1: 	//cargar archivo
-				if(flagLinkedList == 0){
+				if(ll_isEmpty(ventaConcesionaria) == 1){
 
 					if(controller_cargarArchivoVentasDesdeTexto("Ventas.csv", ventaConcesionaria)){
 
 						printf("Los archivos se cargaron correctamente\n");
-						flagLinkedList = 1;
+
 					}else{
 
 						printf("Ocurrio un ERROR, llame a sistemas\n");
 					}
 				}else{
 
-					printf("Los archivos ya se encuentrar cargados...\n");
+					printf("Los archivos ya se encuentran cargados...\n");
 				}
-				system("pause");
 				break;
 
 			case 2:	//alta
-				if(flagLinkedList == 1){
+				if(ll_isEmpty(ventaConcesionaria) == 0){
 
 					if(controller_CargarUnaVenta(ventaConcesionaria)){
 
@@ -55,42 +53,45 @@ int main(void) {
 					}
 				}else{
 
-					printf("No existe un archivo donde escribir una nueva venta\n");
+					printf("No se cargo el archivo donde registrar un alta\n");
 				}
-				system("pause");
 				break;
 
 			case 3://baja
-				if(flagLinkedList == 1){
+				if(ll_isEmpty(ventaConcesionaria) == 0){
 
 					if(controller_removerVenta(ventaConcesionaria)){
 
 						printf("Se dio de BAJA la venta correctamente\n");
+					}else{
+
+						printf("No se dio de baja nada\nSera redirigido al menu principal\n");
 					}
 				}else{
 
-					printf("No existe un archivo donde escribir una nueva venta\n");
+					printf("No existen ventas a remover...\n");
 				}
-				system("pause");
 				break;
 
 			case 4:
-				if(flagLinkedList == 1){
+				if(ll_isEmpty(ventaConcesionaria) == 0){
 
 					if(controller_modificarUnaVenta(ventaConcesionaria)){
 
 						printf("Se modifico Correctamente\n");
+					}else{
+
+						printf("No se realizaron modificaciones\n");
 					}
 
 				}else{
 
-					printf("No existe un archivo donde escribir una nueva venta\n");
+					printf("No existen ventas a modificar...\n");
 				}
-				system("pause");
 				break;
 
 			case 5:	//guardar binario
-				if(flagLinkedList == 1){
+				if(ll_isEmpty(ventaConcesionaria) == 0){
 
 					if(controller_guardarVentasModoBinario("Ventas.bin", ventaConcesionaria)){
 
@@ -101,12 +102,12 @@ int main(void) {
 					}
 				}else{
 
-
+					printf("No hay datos cargados para guardar en el archivo\n");
 				}
 				break;
 
 			case 6://guarda texto
-				if(flagLinkedList == 1){
+				if(ll_isEmpty(ventaConcesionaria) == 0){
 
 					ultimoId = buscarIdMaximo(ventaConcesionaria);
 
@@ -120,27 +121,45 @@ int main(void) {
 					}
 				}else{
 
-
+					printf("No hay datos cargados para guardar en el archivo\n");
 				}
 				break;
 
 			case 7://informes
-				if(controller_guardarInformeATexto("Informe.txt", ventaConcesionaria)){
+				if(ll_isEmpty(ventaConcesionaria) == 0){
 
-					printf("\nSe creo el archivo con los informes correctamente\n");
+					if(controller_guardarInformeATexto("Informe.txt", ventaConcesionaria)){
 
+						printf("\nSe creo el archivo con los informes correctamente\n");
+
+					}else{
+
+						printf("\nERROR al crear el archivo\n");
+					}
 				}else{
 
-					printf("\nERROR al crear el archivo\n");
+					printf("No hay datos cargados para generar un Informe\n");
 				}
 				break;
-
 			case 8:		//salir
+				if(!utn_getNombre(confirmar, 3, "\nIngrese 'Si' si desea finalizar el programa: ",
+					"No ingreso algo correcto\nReintente....\n", 3)){
+
+					printf("Demasiados intentos...\nSera redirigido al menu principal...\n");
+					break;
+				}
 				break;
 			}
+		}else{
+
+			printf("se acabaron los reintentos, por favor verifique que esta ingresando...\n");
 		}
 
-	}while(opcion != 8);
+	}while(stricmp(confirmar, "Si") != 0);
+
+	ll_deleteLinkedList(ventaConcesionaria);
+
+	printf("\nEl programa ha Finalizado\n");
 
 	return 0;
 }

@@ -40,107 +40,11 @@ int controller_cargarArchivoVentasDesdeTexto(char* path, LinkedList* pArrayListJ
 	return retorno;
 }
 
-
-
-//int controller_guardarJugadoresModoTexto(char* path, LinkedList* pArrayListJugador){
-//
-//	int retorno = 0;
-//	FILE* pArchivo;
-//	int longitud; //longitud de linkedList
-//	Venta *auxJugador;
-//	//Campos de struct Jugador.
-//	int auxId;
-//	char auxNombreCompleto[100];
-//	int auxEdad;
-//	char auxPosicion[30];
-//	char auxNacionalidad[30];
-//	int auxIdSeleccion;
-//	int retornoFprintf;
-//
-//	if(path != NULL && pArrayListJugador != NULL){
-//
-//		pArchivo = fopen(path, "w");
-//
-//		if(pArchivo != NULL){
-//
-//			longitud = ll_len(pArrayListJugador);
-//			fprintf(pArchivo, "id,nombreCompleto,edad,posicion,nacionalidad,idSelecion\n");
-//
-//			for(int i = 0; i < longitud ; i++){
-//
-//				auxJugador = ll_get(pArrayListJugador, i);
-//
-//				if(auxJugador != NULL){
-//
-//					if(jug_getId(auxJugador, &auxId)
-//					&& jug_getNombreCompleto(auxJugador, auxNombreCompleto)
-//					&& jug_getEdad(auxJugador, &auxEdad)
-//					&& jug_getPosicion(auxJugador, auxPosicion)
-//					&& jug_getNacionalidad(auxJugador, auxNacionalidad)
-//					&& jug_getIdSeleccion(auxJugador, &auxIdSeleccion)){
-//
-//						//retorna numero de bytes escritos.
-//						retornoFprintf = fprintf(pArchivo, "%d,%s,%d,%s,%s,%d\n" , auxId, auxNombreCompleto, auxEdad, auxPosicion,
-//													auxNacionalidad, auxIdSeleccion);//Escribe el archivo.
-//
-//						if(retornoFprintf == 7){
-//
-//							retorno = 1;
-//						}
-//					}
-//				}
-//			}
-//		}
-//		fclose(pArchivo);
-//	}
-//	return retorno;
-//}
-//
-///** \brief Guarda los datos de los jugadores en el archivo binario.
-//*
-//* \param path char*
-//* \param pArrayListJugador LinkedList*
-//* \return int
-//*
-//*/
-//int controller_guardarJugadoresModoBinario(char* path , LinkedList* pArrayListJugador){
-//
-//	int retorno = 0;
-//	FILE* pArchivo;
-//	Jugador* auxJugador;
-//	int retornoFwrite;
-//
-//	if(path != NULL && pArrayListJugador != NULL){
-//
-//		pArchivo = fopen(path, "wb");
-//
-//		if(pArchivo != NULL){
-//
-//			for(int i = 0; i < ll_len(pArrayListJugador) ; i++){
-//
-//				auxJugador = (Jugador*) ll_get(pArrayListJugador, i);
-//
-//				if(auxJugador != NULL){
-//
-//					//Retorna el número de elementos completos que escribe la función
-//					retornoFwrite = fwrite(auxJugador, sizeof(Jugador), 1, pArchivo);
-//
-//					if(retornoFwrite == 1){
-//
-//						retorno = 1;
-//
-//					}else{
-//
-//						break;
-//					}
-//				}
-//			}
-//		}
-//		fclose(pArchivo);
-//	}
-//	return retorno;
-//}
-
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_CargarUnaVenta(LinkedList* pListaDeVentas){
 
 	Venta* nuevaVenta;
@@ -199,6 +103,11 @@ int controller_CargarUnaVenta(LinkedList* pListaDeVentas){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_removerVenta(LinkedList* pListaDeVentas){
 
 	int retorno = 0;
@@ -241,7 +150,6 @@ int controller_removerVenta(LinkedList* pListaDeVentas){
 						}else{
 
 							retorno = 0;
-							printf("Sera redirigido al menu principal\n");
 						}
 					}
 				}
@@ -251,6 +159,11 @@ int controller_removerVenta(LinkedList* pListaDeVentas){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_modificarUnaVenta(LinkedList* pListaDeVentas){
 
 	int retorno = 0;
@@ -272,7 +185,7 @@ int controller_modificarUnaVenta(LinkedList* pListaDeVentas){
 
 			maximoId = buscarIdMaximo(pListaDeVentas);
 
-			if(utn_getNumero(&idABuscar, "\nSeleccione el ID: ", "\nError Reingrese el ID: ", 1,
+			if(utn_getNumero(&idABuscar, "\nSeleccione el ID: ", "\nError Reingrese el ID... \n", 1,
 					maximoId, 5)){
 
 				indice = validarExistenciaDeVenta(pListaDeVentas, idABuscar);
@@ -366,23 +279,27 @@ int controller_modificarUnaVenta(LinkedList* pListaDeVentas){
 							}
 						}while(opcion != 5);
 					}
-				}else{
-
-					retorno = 0;
-					printf("Sera redirigido al menu principal\n");
 				}
 
 				if(contadorModificar == 0){
 
 					retorno = 0;
-					printf("No se realizaron modificaciones\n");
 				}
+			}else{
+
+				retorno = 0;
+				printf("ERROR al seleccionar un ID\n");
 			}
 		}
 	}
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_cargarIdAutoincremental(char* path, char* auxiliarID){
 
     int retorno = 0;
@@ -431,6 +348,11 @@ int controller_guardarIdAutoincremental(char* path, int ultimoId){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int validarExistenciaDeVenta(LinkedList* pListaVentas, int idParam){
 
 	int retorno = -1;
@@ -459,6 +381,11 @@ int validarExistenciaDeVenta(LinkedList* pListaVentas, int idParam){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int imprimirVenta(LinkedList* pListaDeVentas, int index){
 
 	Venta* nuevaVenta;
@@ -492,6 +419,11 @@ int imprimirVenta(LinkedList* pListaDeVentas, int index){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_listarVentas(LinkedList* pListaDeVentas){
 
 	int retorno = 0;
@@ -520,6 +452,11 @@ int controller_listarVentas(LinkedList* pListaDeVentas){
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_guardarVentasModoTexto(char* path, LinkedList* pListaDeVentas){
 
 	int retorno = 0;
@@ -574,6 +511,12 @@ int controller_guardarVentasModoTexto(char* path, LinkedList* pListaDeVentas){
 	return retorno;
 }
 
+
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_guardarVentasModoBinario(char* path , LinkedList* pListaDeVentas){
 
 	int retorno = 0;
@@ -612,6 +555,11 @@ int controller_guardarVentasModoBinario(char* path , LinkedList* pListaDeVentas)
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int buscarIdMaximo(LinkedList* pListaDeVentas){
 
 	int retorno = 0;
@@ -651,11 +599,12 @@ int buscarIdMaximo(LinkedList* pListaDeVentas){
 
 	return retornoId;
 }
-////////////////////////////////
-///
-///
-///
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_contarVentasPorCriterio(LinkedList* pListaDeVentas, int* cantidadDeVentas,
 						int* cantidadMayorASieteM, int* cantidadMayorAVeinteM, int* cantidadPorModeloQ7){
 
@@ -668,7 +617,7 @@ int controller_contarVentasPorCriterio(LinkedList* pListaDeVentas, int* cantidad
 
 	longitudLinkedList = ll_len(pListaDeVentas);
 
-	if(pListaDeVentas != NULL && longitudLinkedList > 0){
+	if(pListaDeVentas != NULL && longitudLinkedList >= 0){
 
 		retorno = 1;
 
@@ -685,40 +634,47 @@ int controller_contarVentasPorCriterio(LinkedList* pListaDeVentas, int* cantidad
 	return retorno;
 }
 
+/**
+ * \brief :
+ * \param :
+ * \return:
+**/
 int controller_guardarInformeATexto(char* path, LinkedList* pListaDeVentas){
 
     FILE* pArchivo;
     int retorno = 0;
     int longitudLinkedList;
+    int retornoFprintf;
     //Variables de escritura.
     int cantidadDeUnidadesVendidas;
     int cantidadDeUnidadesVendidasMayorASieteMillones;
     int cantidadUnidadesVendidasMayorAVeinteMillones;
     int cantidadVentaPorModeloQ7;
 
-
     if(path != NULL && pListaDeVentas != NULL){
 
     	longitudLinkedList = ll_len(pListaDeVentas);
     	pArchivo = fopen(path, "w");
 
-    	if(pArchivo != NULL && longitudLinkedList > 0){
+    	if(pArchivo != NULL && longitudLinkedList >= 0){
 
 			if(controller_contarVentasPorCriterio(pListaDeVentas ,  &cantidadDeUnidadesVendidas ,
 			&cantidadDeUnidadesVendidasMayorASieteMillones, &cantidadUnidadesVendidasMayorAVeinteMillones,
 			&cantidadVentaPorModeloQ7)){
 
-				printf("Anduve desp de los parametros null\n");
 
-				fprintf(pArchivo, "\n******************\nINFORMES DE VENTA\n******************\n");
+				retornoFprintf = fprintf(pArchivo, "\n******************\nINFORMES DE VENTA\n******************\n");
 
-				fprintf(pArchivo, "\n-Cantidad de unidades vendidas totales: %d",cantidadDeUnidadesVendidas);
-				fprintf(pArchivo, "\n-Cantidad de ventas por un monto mayor a $7000000: %d",cantidadDeUnidadesVendidasMayorASieteMillones);
-				fprintf(pArchivo, "\n-Cantidad de ventas por un monto mayor a $20000000: %d",cantidadUnidadesVendidasMayorAVeinteMillones);
-				fprintf(pArchivo, "\n-Cantidad de unidades vendidas para el modelo Q7: %d",cantidadVentaPorModeloQ7);
+				if(retornoFprintf > 0){
 
-				fprintf(pArchivo, "\n\n******************");
-				retorno = 1;
+					fprintf(pArchivo, "\n-Cantidad de unidades vendidas totales: %d",cantidadDeUnidadesVendidas);
+					fprintf(pArchivo, "\n-Cantidad de ventas por un monto mayor a $7000000: %d",cantidadDeUnidadesVendidasMayorASieteMillones);
+					fprintf(pArchivo, "\n-Cantidad de ventas por un monto mayor a $20000000: %d",cantidadUnidadesVendidasMayorAVeinteMillones);
+					fprintf(pArchivo, "\n-Cantidad de unidades vendidas para el modelo Q7: %d",cantidadVentaPorModeloQ7);
+
+					fprintf(pArchivo, "\n\n******************");
+					retorno = 1;
+				}
 			}
     	}
 		fclose(pArchivo);
