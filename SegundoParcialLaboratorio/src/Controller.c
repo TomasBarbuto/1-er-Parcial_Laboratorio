@@ -9,13 +9,11 @@
 #include "Menu.h"
 
 
-/** \brief Carga los datos de los jugadores desde el archivo jugadores.csv (modo texto).
-*
-* \param path char*
-* \param pArrayListJugador LinkedList*
-* \return int
-*
-*/
+/**
+ * \brief : Carga los datos de las ventas desde el archivo Ventas.csv (modo texto).
+ * \param : path char*,  pArrayListJugador LinkedList*
+ * \return: retorna 1 bien, 0 error.
+**/
 int controller_cargarArchivoVentasDesdeTexto(char* path, LinkedList* pArrayListJugador){
 
 	int retorno;
@@ -41,9 +39,9 @@ int controller_cargarArchivoVentasDesdeTexto(char* path, LinkedList* pArrayListJ
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Da de alta una venta que se cargue
+ * \param : LinkedList* pListaDeVentas
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_CargarUnaVenta(LinkedList* pListaDeVentas){
 
@@ -104,9 +102,9 @@ int controller_CargarUnaVenta(LinkedList* pListaDeVentas){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : elimina de la lista dinamica, una venta que elijas.
+ * \param : LinkedList* pListaDeVentas
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_removerVenta(LinkedList* pListaDeVentas){
 
@@ -160,9 +158,9 @@ int controller_removerVenta(LinkedList* pListaDeVentas){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : modifica una venta que este dentro de la lista Dinamica.
+ * \param : LinkedList* pListaDeVentas
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_modificarUnaVenta(LinkedList* pListaDeVentas){
 
@@ -296,9 +294,9 @@ int controller_modificarUnaVenta(LinkedList* pListaDeVentas){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : carga el archivo ID.csv y toma el valor que se encuentre alli.
+ * \param : char* path, char* auxiliarID
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_cargarIdAutoincremental(char* path, char* auxiliarID){
 
@@ -321,7 +319,7 @@ int controller_cargarIdAutoincremental(char* path, char* auxiliarID){
 * \brief Guarda los datos del ultimo id en el archivo ID.csv (modo texto).
 * \param path char*
 * \param ultimoId int
-* \return int
+* \return 1 bien 0 ERROR.
 **/
 int controller_guardarIdAutoincremental(char* path, int ultimoId){
 
@@ -349,9 +347,9 @@ int controller_guardarIdAutoincremental(char* path, int ultimoId){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : valida que el dato ingresado por parametro exista dentro de la lista dinamica
+ * \param : LinkedList* pListaVentas, int idParam
+ * \return: retorna el indice Bien, -1 ERROR.
 **/
 int validarExistenciaDeVenta(LinkedList* pListaVentas, int idParam){
 
@@ -382,9 +380,9 @@ int validarExistenciaDeVenta(LinkedList* pListaVentas, int idParam){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : imprime una venta, segun el indice pasado por parametro.
+ * \param : LinkedList* pListaDeVentas, int index
+ * \return: 1 Bien, 0 ERROR.
 **/
 int imprimirVenta(LinkedList* pListaDeVentas, int index){
 
@@ -420,9 +418,9 @@ int imprimirVenta(LinkedList* pListaDeVentas, int index){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : lista todas la ventas de una lista dinamica.
+ * \param : LinkedList* pListaDeVentas
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_listarVentas(LinkedList* pListaDeVentas){
 
@@ -455,7 +453,7 @@ int controller_listarVentas(LinkedList* pListaDeVentas){
 /**
  * \brief :
  * \param :
- * \return:
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_guardarVentasModoTexto(char* path, LinkedList* pListaDeVentas){
 
@@ -513,9 +511,9 @@ int controller_guardarVentasModoTexto(char* path, LinkedList* pListaDeVentas){
 
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : guarda la lista dinamica en el archivo que recibe por parametro.
+ * \param : char* path , LinkedList* pListaDeVentas
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_guardarVentasModoBinario(char* path , LinkedList* pListaDeVentas){
 
@@ -556,9 +554,9 @@ int controller_guardarVentasModoBinario(char* path , LinkedList* pListaDeVentas)
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : busca el id maximo que se halla dado de alta.
+ * \param : LinkedList* pListaDeVentas
+ * \return: 1 Bien, 0 ERROR.
 **/
 int buscarIdMaximo(LinkedList* pListaDeVentas){
 
@@ -578,7 +576,9 @@ int buscarIdMaximo(LinkedList* pListaDeVentas){
 			if(auxVenta != NULL){
 
 				if(getIdVenta(auxVenta, &auxId)){
+
 					retorno = 1;
+
 					if(flag == 0){
 
 						idMayor = auxId;
@@ -601,9 +601,10 @@ int buscarIdMaximo(LinkedList* pListaDeVentas){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : pasara por parametro todos los valores de las cantidad de ventas segun el criterio que le fue asignado.
+ * \param : LinkedList* pListaDeVentas, int* cantidadDeVentas,
+			int* cantidadMayorASieteM, int* cantidadMayorAVeinteM, int* cantidadPorModeloQ7
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_contarVentasPorCriterio(LinkedList* pListaDeVentas, int* cantidadDeVentas,
 						int* cantidadMayorASieteM, int* cantidadMayorAVeinteM, int* cantidadPorModeloQ7){
@@ -635,9 +636,9 @@ int controller_contarVentasPorCriterio(LinkedList* pListaDeVentas, int* cantidad
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : crea un informe con 4 criterios y lo guarda.
+ * \param : char* path, LinkedList* pListaDeVentas
+ * \return: 1 Bien, 0 ERROR.
 **/
 int controller_guardarInformeATexto(char* path, LinkedList* pListaDeVentas){
 

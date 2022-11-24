@@ -4,11 +4,10 @@
 #include "concesionaria.h"
 #include "Controller.h"
 
-
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Parsea los datos de las ventas desde el archivo ventas.csv (modo texto).
+ * \param : FILE* pfile, linkedList pListaDeVentas.
+ * \return: 1 bien 0 ERROR.
 **/
 int parser_ArchivoVentasFromText(FILE* pFile, LinkedList* pListaDeVentas){
 
@@ -57,9 +56,9 @@ int parser_ArchivoVentasFromText(FILE* pFile, LinkedList* pListaDeVentas){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Parsea los datos del ID desde el archivo ID.csv (modo texto).
+ * \param : FILE* pfile, puntero a char.
+ * \return: 1 bien 0 ERROR.
 **/
 int parser_ArchivoIdFromText(FILE* pFile , char* auxiliarID){
 

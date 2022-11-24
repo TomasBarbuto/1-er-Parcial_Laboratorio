@@ -3,9 +3,9 @@
 INFORMES DE VENTA
 ******************
 
--Cantidad de unidades vendidas totales: 574
--Cantidad de ventas por un monto mayor a $7000000: 100
--Cantidad de ventas por un monto mayor a $20000000: 92
+-Cantidad de unidades vendidas totales: 586
+-Cantidad de ventas por un monto mayor a $7000000: 101
+-Cantidad de ventas por un monto mayor a $20000000: 93
 -Cantidad de unidades vendidas para el modelo Q7: 4
 
 ******************

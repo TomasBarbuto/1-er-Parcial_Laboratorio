@@ -7,11 +7,10 @@
 #include "Controller.h"
 #include "Validaciones.h"
 
-
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Reserva espacio en memoria para el tipo de dato Venta*.
+ * \param : void
+ * \return: puntero a Venta
 **/
 Venta* newVenta(){
 
@@ -34,9 +33,9 @@ Venta* newVenta(){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Reserva espacio en memoria para un tipo de datos Venta*, cargando los datos en los campos.
+ * \param : 8 punteros a char.
+ * \return: puntero a Venta
 **/
 Venta* nuevaVentaParametros(char* idVenta, char* dia, char* mes, char* anio, char* modeloDeAuto,
 							char* cantidadDeVentas, char* precioDeAuto, char* tarjetaDeCredito){
@@ -55,13 +54,13 @@ Venta* nuevaVentaParametros(char* idVenta, char* dia, char* mes, char* anio, cha
 
 		}
 	}
-	  return nuevaVenta;
+	return nuevaVenta;
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief libera espacio en memoria de un tipo de dato Venta*.
+ * \param puntero a Venta.
+ * \return VOID
 **/
 void deleteVenta(Venta *this){
 
@@ -69,9 +68,9 @@ void deleteVenta(Venta *this){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Carga un dato de tipo int en el campo id de Venta*.
+ * \param puntero a venta, int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int setIdVenta(Venta* this, int id){
 
@@ -87,9 +86,9 @@ int setIdVenta(Venta* this, int id){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief obtiene un dato cargado en el campo id de Venta*.
+ * \param puntero a venta, puntero a int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int getIdVenta(Venta* this, int* id){
 
@@ -104,9 +103,9 @@ int getIdVenta(Venta* this, int* id){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Carga un dato de tipo int en el campo dia de Venta*.
+ * \param puntero a venta, int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int setDiaVenta(Venta* this, int dia){
 
@@ -122,9 +121,9 @@ int setDiaVenta(Venta* this, int dia){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief obtiene un dato cargado en el campo dia de Venta*.
+ * \param puntero a venta, puntero a int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int getDiaVenta(Venta* this, int* dia){
 
@@ -140,9 +139,9 @@ int getDiaVenta(Venta* this, int* dia){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Carga un dato de tipo int en el campo mes de Venta*.
+ * \param puntero a venta, int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int setMesVenta(Venta* this, int mes){
 
@@ -158,9 +157,9 @@ int setMesVenta(Venta* this, int mes){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief obtiene un dato cargado en el campo mes de Venta*.
+ * \param puntero a venta, puntero a int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int getMesVenta(Venta* this, int* mes){
 
@@ -176,9 +175,9 @@ int getMesVenta(Venta* this, int* mes){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Carga un dato de tipo int en el campo anio de Venta*.
+ * \param puntero a venta, int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int setAnioVenta(Venta* this, int anio){
 
@@ -194,9 +193,9 @@ int setAnioVenta(Venta* this, int anio){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief obtiene un dato cargado en el campo anio de Venta*.
+ * \param puntero a venta, puntero a int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int getAnioVenta(Venta* this, int* anio){
 
@@ -212,9 +211,9 @@ int getAnioVenta(Venta* this, int* anio){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Carga un dato de tipo int en el campo cantidadDeVentas de Venta*.
+ * \param puntero a venta, int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int setCantidadDeVentas(Venta* this, int cantidadDeVentas){
 
@@ -231,9 +230,9 @@ int setCantidadDeVentas(Venta* this, int cantidadDeVentas){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief obtiene un dato cargado en el campo cantidadDeVentas de Venta*.
+ * \param puntero a venta, puntero a int
+ * \return int 1 Bien, 0 ERROR.
 **/
 int getCantidadDeVentas(Venta* this, int* cantidadDeVentas){
 
@@ -250,9 +249,9 @@ int getCantidadDeVentas(Venta* this, int* cantidadDeVentas){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Carga un dato de tipo float en el campo PrecioDeAuto de Venta*.
+ * \param puntero a venta, float
+ * \return int 1 Bien, 0 ERROR.
 **/
 int setPrecioDeAuto(Venta* this, float PrecioDeAuto){
 
@@ -269,9 +268,9 @@ int setPrecioDeAuto(Venta* this, float PrecioDeAuto){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief obtiene un dato cargado en el campo precioDeAuto de Venta*.
+ * \param puntero a venta, puntero a float
+ * \return int 1 Bien, 0 ERROR.
 **/
 int getPrecioDeAuto(Venta* this, float* precioDeAuto){
 
@@ -288,9 +287,9 @@ int getPrecioDeAuto(Venta* this, float* precioDeAuto){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Carga un dato de tipo puntero a char en el campo modeloDeAuto de Venta*.
+ * \param puntero a venta, puntero a char.
+ * \return int 1 Bien, 0 ERROR.
 **/
 int setModeloDeAuto(Venta* this, char* modeloDeAuto){
 
@@ -307,9 +306,9 @@ int setModeloDeAuto(Venta* this, char* modeloDeAuto){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief obtiene un dato cargado en el campo modeloDeAuto de Venta*.
+ * \param puntero a venta, puntero a char.
+ * \return int 1 Bien, 0 ERROR.
 **/
 int getModeloDeAuto(Venta* this, char* modeloDeAuto){
 
@@ -326,9 +325,9 @@ int getModeloDeAuto(Venta* this, char* modeloDeAuto){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Carga un dato de tipo puntero a char en el campo tarjetaDeCredito de Venta*.
+ * \param puntero a venta, puntero a char.
+ * \return int 1 Bien, 0 ERROR.
 **/
 int setTarjetaDeCredito(Venta* this, char* tarjetaDeCredito){
 
@@ -345,9 +344,9 @@ int setTarjetaDeCredito(Venta* this, char* tarjetaDeCredito){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief obtiene un dato cargado en el campo tarjetaDeCredito de Venta*.
+ * \param puntero a venta, puntero a char.
+ * \return int 1 Bien, 0 ERROR.
 **/
 int getTarjetaDeCredito(Venta* this, char* tarjetaDeCredito){
 
@@ -365,9 +364,9 @@ int getTarjetaDeCredito(Venta* this, char* tarjetaDeCredito){
 
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : crea un lista con modelos, para elegir uno para dar de alta.
+ * \param : puntero a char.
+ * \return: 1 bien 0 ERROR.
 **/
 int elegirModelo(char pModeloElegido[]){
 
@@ -429,9 +428,9 @@ int elegirModelo(char pModeloElegido[]){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : otorga un id autoincremental siempre que se la llame.
+ * \param : void
+ * \return: retorna el id incrementado.
 **/
 int idAutoincremental(){
 
@@ -454,16 +453,16 @@ int idAutoincremental(){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : funcion criterio de ventas mayores a 7m.
+ * \param : void* pElement
+ * \return: retorna 1 si cumple tal condicion o 0 si no la cumple.
 **/
 int ventasMayorASieteMillones(void* pElement){
 
 	int retorno = 0;
 	float auxPrecio;
 	int auxCantidadDeVentas;
-	Venta* auxVenta = pElement;
+	Venta* auxVenta = (Venta*)pElement;
 
 	if(auxVenta != NULL){
 
@@ -481,16 +480,16 @@ int ventasMayorASieteMillones(void* pElement){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : funcion criterio de ventas mayores a 20m.
+ * \param : void* pElement
+ * \return: retorna 1 si cumple la condicion y 0 si no la cumple.
 **/
 int ventasMayorAVeinteMillones(void* pElement){
 
 	int retorno = 0;
 	float auxPrecio;
 	int auxCantidadDeVentas;
-	Venta* auxVenta = pElement;
+	Venta* auxVenta = (Venta*)pElement;
 
 	if(auxVenta != NULL){
 
@@ -509,15 +508,15 @@ int ventasMayorAVeinteMillones(void* pElement){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : va a contar segun el elemento que se le pase, la cantidad de ventas realizadas.
+ * \param : void* pElement.
+ * \return: retorna la cantidad de ventas realizadas, si no hubiera retorna 0.
 **/
 int ventasDeUnidadesTotales(void* pElement){
 
 	int retorno = 0;
 	int auxCantidadDeVentas;
-	Venta* auxVenta = pElement;
+	Venta* auxVenta = (Venta*)pElement;
 
 	if(auxVenta != NULL){
 
@@ -533,9 +532,9 @@ int ventasDeUnidadesTotales(void* pElement){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : va a contar segun el elemento que se le pase, la cantidad de ventas realizadas por un tipo de modelo.
+ * \param : void* pElement.
+ * \return: retorna la cantidad de ventas, si no hubiera retorna 0.
 **/
 int ventasPorModeloQSiete(void* pElement){
 
@@ -543,7 +542,7 @@ int ventasPorModeloQSiete(void* pElement){
 	int auxCantidad;
 	char modeloDeAuto[200] = "Q7";
 	char auxModelo[200];
-	Venta* auxVenta = pElement;
+	Venta* auxVenta = (Venta*)pElement;
 
 	if(auxVenta != NULL){
 

@@ -6,9 +6,10 @@ static Node* getNode(LinkedList* this, int nodeIndex);
 static int addNode(LinkedList* this, int nodeIndex,void* pElement);
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Crea un nuevo LinkedList en memoria de manera dinamica
+ * \param : void
+ * \return: LinkedList* Retorna (NULL) en el caso de no conseguir espacio en memoria
+			o el puntero al espacio reservado
 **/
 LinkedList* ll_newLinkedList(void){
 
@@ -23,6 +24,11 @@ LinkedList* ll_newLinkedList(void){
     return this;
 }
 
+/**
+ * \brief Retorna la cantidad de elementos de la lista.
+ * \param this LinkedList*
+ * \return int Retorna (-1) si el puntero es NULL o la cantidad de elementos de la lista
+**/
 int ll_len(LinkedList* this){
 
     int retorno = -1;
@@ -34,11 +40,10 @@ int ll_len(LinkedList* this){
     return retorno;
 }
 
-
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Obtiene un nodo de la lista
+ * \param : this LinkedList*, nodeindex int
+ * \return: Node* Retorna  (NULL) Error: si el puntero a la lista es NULL o  (pNode) Si funciono correctamente
 **/
 static Node* getNode(LinkedList* this, int nodeIndex){
 
@@ -56,11 +61,10 @@ static Node* getNode(LinkedList* this, int nodeIndex){
     return auxNode;
 }
 
-
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Agrega y enlaza un nuevo nodo a la lista
+ * \param : LinkedList* this, int nodeIndex,void* pElement.
+ * \return: int Retorna -1 Error , 0 Si funciono correctamente
 **/
 static int addNode(LinkedList* this, int nodeIndex,void* pElement){
 
@@ -96,11 +100,10 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement){
     return retorno;
 }
 
-
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Agrega un elemento a la lista.
+ * \param : LinkedList* this, void* pElement.
+ * \return: Retorna -1 Error, 0 Si funciono correctamente
 **/
 int ll_add(LinkedList* this, void* pElement){
 
@@ -117,11 +120,10 @@ int ll_add(LinkedList* this, void* pElement){
     return retorno;
 }
 
-
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : trae un Nodo segun el indice que se le pase por parametro.
+ * \param : LinkedList* this, int index
+ * \return: retorna NULL, si no se encontro, si funciono retorna el nodo*.
 **/
 void* ll_get(LinkedList* this, int index){
 
@@ -140,11 +142,10 @@ void* ll_get(LinkedList* this, int index){
     return pRetorno;
 }
 
-
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Modifica un elemento de la lista
+ * \param : LinkedList* this, int index, void* pElement
+ * \return: Retorna -1 Error , retorna 0 si funciono correctamente.
 **/
 int ll_set(LinkedList* this, int index, void* pElement){
 
@@ -163,9 +164,9 @@ int ll_set(LinkedList* this, int index, void* pElement){
 
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Elimina un elemento de la lista
+ * \param : LinkedList* this, int index
+ * \return: Retorna -1 Error , retorna 0 si funciono correctamente.
 **/
 int ll_remove(LinkedList* this, int index){
 
@@ -198,9 +199,9 @@ int ll_remove(LinkedList* this, int index){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Elimina todos los Nodos de la lista
+ * \param : LinkedList* this
+ * \return: Retorna -1 Error , retorna 0 si funciono correctamente.
 **/
 int ll_clear(LinkedList* this) {
 
@@ -222,9 +223,9 @@ int ll_clear(LinkedList* this) {
 
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Elimina la linkedList.
+ * \param : LinkedList* this
+ * \return: Retorna -1 Error , retorna 0 si funciono correctamente.
 **/
 int ll_deleteLinkedList(LinkedList* this) {
 
@@ -242,9 +243,9 @@ int ll_deleteLinkedList(LinkedList* this) {
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Busca el indice de la primer ocurrencia del elemento pasado como parametro
+ * \param : LinkedList* this, void* pElement
+ * \return: retorna -1 si no hallo coincidencia, si la hayo retorna el indice del elemento.
 **/
 int ll_indexOf(LinkedList* this, void* pElement) {
 
@@ -268,11 +269,10 @@ int ll_indexOf(LinkedList* this, void* pElement) {
     return retorno;
 }
 
-
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Ordena los elementos de la lista utilizando la funcion criterio recibida como parametro
+ * \param : LinkedList* this, int (*pFunc)(void* ,void*), int order.
+ * \return: Retorna -1 Error , retorna 0 si funciono correctamente.
 **/
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order){
 
@@ -314,15 +314,15 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Indica si la lista esta o no vacia
+ * \param : LinkedList* this
+ * \return: 0 Si la lista NO esta vacia, 1 Si la lista esta vacia.
 **/
 int ll_isEmpty(LinkedList* this){
 
     int retorno = -1;
 
-    if(this!=NULL){
+    if(this != NULL){
 
         if(ll_len(this) > 0){
 
@@ -337,9 +337,9 @@ int ll_isEmpty(LinkedList* this){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Inserta un nuevo elemento en la lista en la posicion indicada
+ * \param : LinkedList* this, int index, void* pElement
+ * \return: Retorna -1 Error , retorna 0 si funciono correctamente.
 **/
 int ll_push(LinkedList* this, int index, void* pElement){
 
@@ -356,20 +356,20 @@ int ll_push(LinkedList* this, int index, void* pElement){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : extrae el elemento de la posicion indicada y retorna su puntero.
+ * \param : LinkedList* this, int index
+ * \return: Retorna void* o (NULL) Error
 **/
 void* ll_pop(LinkedList* this, int index){
 
     void* retorno = NULL;
     void * auxPElement = NULL;
 
-    if(this!=NULL && index>=0 && index<ll_len(this)){
+    if(this != NULL && index >= 0 && index < ll_len(this)){
 
     	auxPElement = ll_get(this, index);
 
-        if(auxPElement!=NULL){
+        if(auxPElement != NULL){
 
             retorno = auxPElement;
             ll_remove(this, index);
@@ -380,9 +380,9 @@ void* ll_pop(LinkedList* this, int index){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Determina si la lista contiene o no el elemento pasado como parametro
+ * \param : LinkedList* this, void* pElement
+ * \return: 1 Si contiene el elemento, 0 si No contiene el elemento
 **/
 int ll_contains(LinkedList* this, void* pElement){
 
@@ -403,13 +403,13 @@ int ll_contains(LinkedList* this, void* pElement){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Determina si todos los elementos de la lista (this2) estan contenidos en la lista (this)
+ * \param : LinkedList* this, LinkedList* this2
+ * \return: Retorna  (-1) Error, 1 Si los elementos estan contenidos, 0 si los elementos no estan contenidos.
 **/
 int ll_containsAll(LinkedList* this, LinkedList* this2){
 
-    int retorno=-1;
+    int retorno = -1;
     int longitudThis2;
 
     if(this!=NULL && this2!=NULL){  //ver si hay que validar que una list2 sea menor que list
@@ -439,9 +439,9 @@ int ll_containsAll(LinkedList* this, LinkedList* this2){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Crea y retorna una nueva lista con los elementos indicados.
+ * \param : LinkedList* this, int from, int to.
+ * \return: retorna un nuevo linkedlist*, o NULL si no cumple las condiciones.
 **/
 LinkedList* ll_subList(LinkedList* this, int from, int to) {
 
@@ -468,9 +468,9 @@ LinkedList* ll_subList(LinkedList* this, int from, int to) {
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : Crea y retorna una nueva lista con los elementos de la lista pasada como parametro
+ * \param : LinkedList* this
+ * \return: retorna un nuevo linkedlist*, o NULL si no cumple las condiciones.
 **/
 LinkedList* ll_clone(LinkedList* this) {
 
@@ -484,9 +484,9 @@ LinkedList* ll_clone(LinkedList* this) {
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief : acumula la cantidad de elementos que cumplen con el critero pasado por la funcion que recibe como paramentro.
+ * \param : LinkedList* this, int (*fn)(void* element)
+ * \return: retorna acumulador.
 **/
 int ll_count(LinkedList* this, int (*fn)(void* element)){
 
@@ -511,3 +511,64 @@ int ll_count(LinkedList* this, int (*fn)(void* element)){
 	return acumulador;
 }
 
+/**
+ * \brief : crea una listra filtrada segun el critero de la funcion pasada por parametro.
+ * \param : LinkedList* this, int (*fn)(void* element)
+ * \return: retorna nueva LinkedList* o LinkedList* NULL.
+**/
+LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element)){
+
+    LinkedList* filterList = NULL;
+    int lenList;
+    void* auxElement;
+
+    if(this != NULL && fn != NULL){
+
+        filterList = ll_newLinkedList();
+        lenList = ll_len(this);
+
+        if(filterList != NULL && lenList > 0){
+
+        	for(int i = 0; i < lenList; i++){
+
+            auxElement = ll_get(this,i);
+
+            	if(auxElement != NULL && fn(auxElement) == 1){
+
+            		ll_add(filterList, auxElement);
+            	}
+        	}
+        }
+    }
+    return filterList;
+}
+
+/**
+ * \brief : Modifica todos los elementos que cumplan con la funcion pasada por parametro.
+ * \param : LinkedList* this, void (*fn)(void* element)
+ * \return: retorna la misma LinkedList* con o sin los cambios realizados.
+**/
+LinkedList* ll_map(LinkedList* this, void (*fn)(void* element)){
+
+    int lenList;
+    void *auxElement;
+
+    if(this != NULL && fn != NULL){
+
+        lenList=ll_len(this);//INDEX DE ULTIMO ELEMENTO VA A SER MENOR AL TOTAL DE LOS ELEMENTOS.N-1
+
+        if(lenList > 0){
+
+        	for(int i = 0; i < lenList; i++){
+
+            auxElement = ll_get(this,i);
+
+            	if(auxElement != NULL){
+
+            		fn(auxElement);
+            	}
+        	}
+        }
+    }
+    return this;
+}

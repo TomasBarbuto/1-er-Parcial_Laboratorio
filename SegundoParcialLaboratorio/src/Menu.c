@@ -3,9 +3,9 @@
 
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Muestra un menu con opciones.
+ * \param VOID
+ * \return VOID
 **/
 void menuPrincipal(){
 
@@ -22,9 +22,9 @@ void menuPrincipal(){
 }
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Muestra un menu con opciones.
+ * \param VOID
+ * \return VOID
 **/
 void menuElegirModelo(){
 
@@ -43,9 +43,9 @@ void menuElegirModelo(){
 
 
 /**
- * \brief :
- * \param :
- * \return:
+ * \brief Muestra un menu con opciones.
+ * \param VOID
+ * \return VOID
 **/
 void menuModificar(){
 

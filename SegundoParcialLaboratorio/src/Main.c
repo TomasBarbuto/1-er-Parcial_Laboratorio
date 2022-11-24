@@ -19,6 +19,7 @@ int main(void) {
 
 
 	do{
+
 		menuPrincipal();
 		if(utn_getNumero(&opcion, "Opcion: ", "\nValor no valido Reingrese...\n", 1, 8, 5)){
 
@@ -155,7 +156,7 @@ int main(void) {
 			printf("se acabaron los reintentos, por favor verifique que esta ingresando...\n");
 		}
 
-	}while(stricmp(confirmar, "Si") != 0);
+	}while(!stricmp(confirmar, "Si") == 0);
 
 	ll_deleteLinkedList(ventaConcesionaria);
 
