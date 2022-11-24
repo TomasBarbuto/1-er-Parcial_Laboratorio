@@ -139,10 +139,9 @@ int controller_removerVenta(LinkedList* pListaDeVentas){
 
 						if(confirmar == 1){
 
-							deleteVenta(auxVenta);
-
 							if(ll_remove(pListaDeVentas, indice) == 0){
 
+								deleteVenta(auxVenta);
 								retorno = 1;
 							}
 						}else{

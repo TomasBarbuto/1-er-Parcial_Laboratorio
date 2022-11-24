@@ -24,4 +24,5 @@ int buscarIdMaximo(LinkedList* pListaDeVentas);
 int controller_contarVentasPorCriterio(LinkedList* pListaDeVentas, int* cantidadDeVentas,
 									int* cantidadMayorASieteM,int* cantidadMayorAVeinteM, int* cantidadPorModeloQ7);
 int controller_guardarInformeATexto(char* path, LinkedList* pListaDeVentas);
+int buscarIdMaximo(LinkedList* pArrayListJugador);
 #endif /* CONTROLLER_H_ */

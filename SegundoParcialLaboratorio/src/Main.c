@@ -158,9 +158,9 @@ int main(void) {
 
 	}while(!stricmp(confirmar, "Si") == 0);
 
-	ll_deleteLinkedList(ventaConcesionaria);
+	if(ll_deleteLinkedList(ventaConcesionaria) == 0){
 
-	printf("\nEl programa ha Finalizado\n");
-
+		printf("\nEl programa ha Finalizado\n");
+	}
 	return 0;
 }
